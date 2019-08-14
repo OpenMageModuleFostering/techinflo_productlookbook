@@ -8,10 +8,7 @@ $helper = Mage::helper('productlookbook');
 
 if ($helper->getEnabled()) :
 
-    $makets = Mage::getModel('productlookbook/productlookbook')
-                        ->getCollection()
-                        ->addFieldToFilter('status', 1)
-                        ->setOrder('position', 'ASC');
+    $makets = $this->getCollection();
     
     $width = $helper->getMaxImageWidth();
     $height = $helper->getMaxImageHeight();
@@ -24,7 +21,7 @@ if ($helper->getEnabled()) :
     $trans_period = ($helper->getTransitionDuration()) ? $helper->getTransitionDuration() : 1500;       
     $hotspots = array();
     
-    if ($makets->getSize()) :
+    
     ?>
     <div class="camera_wrap camera_black_skin" id="productlookbook" style="width:<?php echo $width;?>px;">
          <?php foreach ($makets as $image): ?>
@@ -69,6 +66,6 @@ if ($helper->getEnabled()) :
     		});      
      //]]>
     </script>
-    <?php endif;?>
+
 <?php endif;?>
 
