@@ -8,7 +8,10 @@ $helper = Mage::helper('productlookbook');
 
 if ($helper->getEnabled()) :
 
-    $makets = $this->getCollection();
+    $makets = Mage::getModel('productlookbook/productlookbook')
+                        ->getCollection()
+                        ->addFieldToFilter('status', 1)
+                        ->setOrder('position', 'ASC');
     
     $width = $helper->getMaxImageWidth();
     $height = $helper->getMaxImageHeight();
