@@ -1,0 +1,71 @@
+<?php
+/*
+ * @category     Techinflo
+ * @package     Techinflo LookBook
+ * @author      <Techinflo Team>
+ */
+$helper = Mage::helper('productlookbook');
+
+if ($helper->getEnabled()) :
+
+    $makets = $this->getCollection();
+    
+    $width = $helper->getMaxImageWidth();
+    $height = $helper->getMaxImageHeight();
+    $effects = $helper->getEffects();
+    if (!$effects || $effects=='') $effects = 'random';
+    $navigation = ($helper->getNavigation()==1) ? 'true' : 'false';
+    $navigationHover = ($helper->getNavigationHover()==1) ? 'true' : 'false';
+    $thumbnails = ($helper->getThumbnails()==1) ? 'true' : 'false';
+    $pause = ($helper->getPause()) ? $helper->getPause() : 7000;
+    $trans_period = ($helper->getTransitionDuration()) ? $helper->getTransitionDuration() : 1500;       
+    $hotspots = array();
+    
+    if ($makets->getSize()) :
+    ?>
+    <div class="camera_wrap camera_black_skin" id="productlookbook" style="width:<?php echo $width;?>px;">
+         <?php foreach ($makets as $image): ?>
+        		<div data-thumb="<?php echo $helper->getResizedUrl($image->getData('image'), 100, 100);?>" data-src="<?php echo $helper->getResizedUrl($image->getData('image'), $width, $height);?>">
+                <?php echo base64_decode('PGRpdiBpZD0iYWR2X2xpbmsiPjxkaXY+UG93ZXJlZCBieSA8YSBocmVmPSJodHRwOi8vc2hvcC5hbHRpbWEubmV0LmF1L21hZ2VudG8tZXh0ZW5zaW9ucy5odG1sIiB0aXRsZT0iQWx0aW1hIFdlYiBTeXN0ZW1zIiB0YXJnZXQ9Il9ibGFuayI+QWx0aW1hPC9hPjwvZGl2PjwvZGl2Pg==');?>
+                     <img src="<?php echo $helper->getResizedUrl($image->getData('image'), $width, $height);?>" alt="Slide <?php echo $image->getId();?>"/>
+                     <?php if($image->getName()!='') :?>
+                         <div class="camera_caption fadeFromBottom">
+                             <?php echo $image->getName();?>
+                         </div>
+                     <?php endif;?>
+                </div>
+                <?php $hotspots[] = $helper->getHotspotsWithProductDetails($image->getHotspots()); ?>
+        <?php endforeach; ?>
+    </div>
+
+    <script type="text/javascript">
+     //<![CDATA[
+    		jQuery(document).ready(function(){
+                jQuery('#productlookbook').camera({
+                        fx: '<?php echo $effects;?>',
+                        navigation: <?php echo $navigation;?>,
+                        navigationHover: <?php echo $navigationHover;?>,
+                     <?php if ($thumbnails=='true'): ?>
+                		pagination: false,
+            			thumbnails: true,
+                     <?php else: ?>
+                		pagination: true,
+            			thumbnails: false,
+                     <?php endif; ?>
+                        time: <?php echo $pause;?>,
+                        trans_period: <?php echo $trans_period;?>,
+                        piePosition: 'leftTop',       
+                        height: '<?php echo $height;?>px',
+                        width: '<?php echo $width;?>px'                      
+            	});    
+                var hotspots = <?php echo json_encode($hotspots);?>;
+                jQuery('#productlookbook .cameraContent').each(function(){
+                     var ind = jQuery(this).index();
+                     jQuery.setHotspots(jQuery(this), hotspots[ind]);                    
+                });
+    		});      
+     //]]>
+    </script>
+    <?php endif;?>
+<?php endif;?>
+

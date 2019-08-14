@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Techinflo_Productlookbook",
+    "type": "magento-module",
+    "license": "Open-Software-License-v.-3.0-(OSL-3.0)",
+    "homepage": "",
+    "description": "This extension allows a vendor to upload Images with the popular styles /trend and then customer can click on a particular part of the image, like Dress, Accessories, footwear etc, to view the matching products.",
+    "authors": [
+    {
+        "name": "Techinflo",
+        "email": "contact@techinflo.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

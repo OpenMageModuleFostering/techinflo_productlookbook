@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * @category     Techinflo
+ * @package     Techinflo Product LookBook
+ * @author      <Techinflo Team>
+ */
+-->
+<config>
+    <modules>
+        <Techinflo_Productlookbook>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Core/>
+                <Mage_Adminhtml/>
+                <Mage_Catalog/>
+            </depends>
+        </Techinflo_Productlookbook>
+    </modules>
+</config> 

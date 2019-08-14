@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * @category     Techinflo
+ * @package     Techinflo LookBook
+ * @author      <Techinflo Team>
+ */
+-->
+<layout version="0.1.0">
+    <productlookbook_adminhtml_productlookbook_index>
+        <reference name="content">
+            <block type="productlookbook/adminhtml_productlookbook" name="productlookbook" />
+        </reference>
+    </productlookbook_adminhtml_productlookbook_index>
+     <productlookbook_adminhtml_productlookbook_edit>
+        <reference name="head">
+                <action method="addCss"><stylesheet>productlookbook/css/annotation.css</stylesheet></action>
+                <action method="addCss"><stylesheet>productlookbook/css/fileuploader.css</stylesheet></action>
+                 <action method="addJs"><script>jquery/jquery-1.8.2.min.js</script></action>
+		         <action method="addJs"><script>jquery/jquery.noconflict.js</script></action>                 
+                 <action method="addJs"><script>productlookbook/jquery-ui-1.9.1.js</script></action>
+                 <action method="addJs"><script>productlookbook/jquery.annotate.js</script></action>
+                 <action method="addJs"><script>productlookbook/fileuploader.js</script></action>
+                 <action method="addJs"><script>productlookbook/json2.min.js</script></action>
+        </reference>
+    </productlookbook_adminhtml_productlookbook_edit>
+</layout>
