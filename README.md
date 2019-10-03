@@ -1,3 +1,5 @@
+
+
 ## Original Package Description
 
 This extension allows a vendor to upload Images with the popular styles /trend and then customer can click on a particular part of the image, like Dress, Accessories, footwear etc, to view the matching products.
